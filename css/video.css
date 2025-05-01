@@ -44,4 +44,26 @@
     font-size: 14px;
     border-radius: 5px;
   }
+  .close-video {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s ease;
+  }
+  
+  .close-video:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+  }
+  
   
