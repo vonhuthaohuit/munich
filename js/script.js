@@ -407,14 +407,12 @@ document.querySelectorAll('.video-container').forEach(container => {
   const selector = container.querySelector('.resolutionSelector');
   const closeBtn = container.querySelector('.close-video');
 
-  // Hiện video khi click ảnh
   previewImage.addEventListener('click', () => {
     previewImage.style.display = 'none';
     videoWrapper.style.display = 'block';
     video.play();
   });
 
-  // Thu gọn video, hiện lại ảnh
   closeBtn.addEventListener('click', () => {
     video.pause();
     video.currentTime = 0;
@@ -422,7 +420,6 @@ document.querySelectorAll('.video-container').forEach(container => {
     previewImage.style.display = 'block';
   });
 
-  // Thay đổi độ phân giải
   selector.addEventListener('change', () => {
     const currentTime = video.currentTime;
     const isPaused = video.paused;
