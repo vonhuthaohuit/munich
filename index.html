@@ -2749,10 +2749,10 @@
           <img src="./img/home-group-2.webp" class="preview-image" style="width: 100%; cursor: pointer;" />
         
           <div class="video-wrapper" style="display: none;">
-            <video controls class="video-player" style="width: 100%;">
+            <video controls tabindex="0" class="video-player" style="width: 100%;">
               <source src="videos/SampleVideo_720x480_20mb.mp4" type="video/mp4" data-resolution="720p" />
-              <source src="videos/SampleVideo_1080p_20mb.mp4" type="video/mp4" data-resolution="1080p" />
-              <source src="videos/SampleVideo_480p_20mb.mp4" type="video/mp4" data-resolution="480p" />
+              <source src="videos/1080.mp4" type="video/mp4" data-resolution="1080p" />
+              <source src="videos/480.mp4" type="video/mp4" data-resolution="480p" />
             </video>
         
             <select class="resolutionSelector" style="margin-top: 10px;">
@@ -2982,10 +2982,10 @@
               <img src="./img/main-home-video-button-2048x874.jpg" class="preview-image" style="width: 100%; cursor: pointer;" />
             
               <div class="video-wrapper" style="display: none;">
-                <video id="" controls class="video-player" style="width: 100%;">
+                <video tabindex="0" controls class="video-player" style="width: 100%;">
                   <source src="videos/SampleVideo_720x480_20mb.mp4" type="video/mp4" data-resolution="720p" />
-                  <source src="videos/SampleVideo_1080p_20mb.mp4" type="video/mp4" data-resolution="1080p" />
-                  <source src="videos/SampleVideo_480p_20mb.mp4" type="video/mp4" data-resolution="480p" />
+                  <source src="videos/1080.mp4" type="video/mp4" data-resolution="1080p" />
+                  <source src="videos/480.mp4" type="video/mp4" data-resolution="480p" />
                 </video>
             
                 <select class="resolutionSelector" style="margin-top: 10px;">
@@ -3035,10 +3035,10 @@
               <img src="./img/main-home-video-button-2048x874.jpg" class="preview-image" style="width: 100%; cursor: pointer;" />
             
               <div class="video-wrapper" style="display: none;">
-                <video controls class="video-player" style="width: 100%;">
+                <video controls tabindex="0" class="video-player" style="width: 100%;">
                   <source src="videos/SampleVideo_720x480_20mb.mp4" type="video/mp4" data-resolution="720p" />
-                  <source src="videos/SampleVideo_720x480_20mb.mp4" type="video/mp4" data-resolution="1080p" />
-                  <source src="videos/SampleVideo_720x480_20mb.mp4" type="video/mp4" data-resolution="480p" />
+                  <source src="videos/1080.mp4" type="video/mp4" data-resolution="1080p" />
+                  <source src="videos/480.mp4" type="video/mp4" data-resolution="480p" />
                 </video>
             
                 <select class="resolutionSelector" style="margin-top: 10px;">
@@ -3312,19 +3312,25 @@
             <p><strong>Here are some reasons why:</strong></p>
           </div>
           <div class="right">
-            <a
-              href="#"
-              class="image-banner popup-video"
-              data-src="videos/SampleVideo_720x480_20mb.mp4"
-            >
-              <img src="./img/home-group-2.webp" />
-            </a>
-            <video controls="" style="display: none; width: 100%">
-              <source
-                src="videos/SampleVideo_720x480_20mb.mp4"
-                type="video/mp4"
-              />
-            </video>
+            <div class="video-container" style="margin-bottom: 30px;">
+              <img src="./img/home-group-2.webp" class="preview-image" style="width: 100%; cursor: pointer;" />
+            
+              <div class="video-wrapper" style="display: none;">
+                <video controls tabindex="0" class="video-player" style="width: 100%;">
+                  <source src="videos/SampleVideo_720x480_20mb.mp4" type="video/mp4" data-resolution="720p" />
+                  <source src="videos/1080.mp4" type="video/mp4" data-resolution="1080p" />
+                  <source src="videos/480.mp4" type="video/mp4" data-resolution="480p" />
+                </video>
+            
+                <select class="resolutionSelector" style="margin-top: 10px;">
+                  <option value="720p">720p HD</option>
+                  <option value="1080p">1080p HD</option>
+                  <option value="480p">480p</option>
+                </select>
+            
+                <button class="close-video" title="Close Video">✕</button>
+              </div>
+            </div>
           </div>
         </div>
         <div class="list-item flex flex-column flex-row-md">

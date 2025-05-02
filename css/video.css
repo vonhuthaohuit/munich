@@ -9,7 +9,7 @@
   .preview-image {
     width: 100%;
     cursor: pointer;
-    border-radius: 12px;
+    /* border-radius: 12px; */
     display: block;
   }
   
