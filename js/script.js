@@ -439,31 +439,4 @@ document.querySelectorAll('.video-container').forEach(container => {
   });
 });
 
-// Play or pause video on click enter
-document.addEventListener('keydown', (e) => {
-  document.querySelectorAll('.video-container').forEach(container => {
-    const videoWrapper = container.querySelector('.video-wrapper');
-    const video = container.querySelector('.video-player');
-    const previewImage = container.querySelector('.preview-image');
-
-    if (videoWrapper.style.display === 'block') {
-      if (e.code === 'Space') {
-        e.preventDefault();
-        if (video.paused) {
-          video.play();
-        } else {
-          video.pause();
-        }
-      }
-
-      if (e.code === 'Escape') {
-        e.preventDefault();
-        video.pause();
-        video.currentTime = 0;
-        videoWrapper.style.display = 'none';
-        previewImage.style.display = 'block';
-      }
-    }
-  });
-});
 
