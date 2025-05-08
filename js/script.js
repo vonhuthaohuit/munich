@@ -1,3 +1,21 @@
+// Setup tabindex for videos and other focusable elements
+document.addEventListener('DOMContentLoaded', () => {
+  const videos = document.querySelectorAll('video');
+  const focusableElements = document.querySelectorAll(
+    'a, button, input, select, textarea, [tabindex]:not(video)'
+  );
+
+  videos.forEach(video => {
+    video.setAttribute('tabindex', '0');
+  });
+
+  let tabindexCounter = 1;
+  focusableElements.forEach(element => {
+    element.setAttribute('tabindex', tabindexCounter);
+    tabindexCounter++;
+  });
+});
+
 function toggleCollapsible() {
   const links = document.querySelectorAll(".toggleLink");
   links.forEach((link) => {
@@ -352,91 +370,60 @@ function animateUnderline() {
 
   items.forEach((item) => observer.observe(item));
 }
+document.addEventListener('DOMContentLoaded', () => {
+  const previewImages = document.querySelectorAll('.preview-image');
+  const videoWrappers = document.querySelectorAll('.video-wrapper');
+  const videos = document.querySelectorAll('.video-player');
+  const closeButtons = document.querySelectorAll('.close-video');
 
-document.addEventListener("DOMContentLoaded", animateUnderline);
+  // Open video on Enter or click
+  previewImages.forEach((image, index) => {
+    image.addEventListener('click', () => {
+      videoWrappers[index].style.display = 'block';
+      videos[index].focus();
+    });
 
-var prevScrollpos = window.pageYOffset;
-var header = document.getElementById("header");
-var section24 = document.getElementById("section-24");
-var sidebarLeft = document.querySelector(".sidebar-left");
-var sidebarRight = document.querySelector(".sidebar-right");
-window.onscroll = function () {
-  if (header) {
-    var currentScrollPos = window.pageYOffset;
-    if (currentScrollPos == 0) {
-      header.classList.remove("hide-sticky-header");
-      header.classList.remove("show-sticky-header");
-    } else {
-      if (prevScrollpos > currentScrollPos) {
-        header.classList.add("show-sticky-header");
-        header.classList.remove("hide-sticky-header");
-        if (section24) section24.style.top = "100px";
-        if (sidebarLeft) sidebarLeft.style.top = "100px";
-        if (sidebarRight) sidebarRight.style.top = "100px";
-      } else {
-        header.classList.remove("show-sticky-header");
-        header.classList.add("hide-sticky-header");
-        if (section24) section24.style.top = "0px";
-        if (sidebarLeft) sidebarLeft.style.top = "0px";
-        if (sidebarRight) sidebarRight.style.top = "0px";
-      }
-    }
-    prevScrollpos = currentScrollPos;
-  }
-
-  if (document.documentElement.scrollTop > 400) {
-    scrollTopBtn?.classList.add("show");
-  } else {
-    scrollTopBtn?.classList.remove("show");
-  }
-};
-
-const scrollTopBtn = document.getElementById("back-to-top");
-
-if (scrollTopBtn) {
-  scrollTopBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-}
-
-// Play video scrennshot
-document.querySelectorAll('.video-container').forEach(container => {
-  const previewImage = container.querySelector('.preview-image');
-  const videoWrapper = container.querySelector('.video-wrapper');
-  const video = container.querySelector('.video-player');
-  const selector = container.querySelector('.resolutionSelector');
-  const closeBtn = container.querySelector('.close-video');
-
-  previewImage.addEventListener('click', () => {
-    previewImage.style.display = 'none';
-    videoWrapper.style.display = 'block';
-    video.play();
-  });
-
-  closeBtn.addEventListener('click', () => {
-    video.pause();
-    video.currentTime = 0;
-    videoWrapper.style.display = 'none';
-    previewImage.style.display = 'block';
-  });
-
-  selector.addEventListener('change', () => {
-    const currentTime = video.currentTime;
-    const isPaused = video.paused;
-    const selectedResolution = selector.value;
-    const sources = video.querySelectorAll('source');
-
-    sources.forEach(source => {
-      if (source.getAttribute('data-resolution') === selectedResolution) {
-        video.src = source.src;
-        video.load();
-        video.addEventListener('loadedmetadata', () => {
-          video.currentTime = currentTime;
-          if (!isPaused) video.play();
-        }, { once: true });
+    image.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        videoWrappers[index].style.display = 'block';
+        videos[index].focus();
       }
     });
   });
-});
 
+  // Play/Pause video on Enter or Space
+  videos.forEach((video) => {
+    video.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault(); // Prevent scrolling on Space
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+    });
+  });
+
+  // Close video on Esc
+  closeButtons.forEach((button, index) => {
+    button.addEventListener('click', () => {
+      videoWrappers[index].style.display = 'none';
+    });
+
+    button.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        videoWrappers[index].style.display = 'none';
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      videoWrappers.forEach((wrapper) => {
+        wrapper.style.display = 'none';
+      });
+    }
+  });
+});
 
